@@ -1,0 +1,69 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.converter-panes {
+  display: grid;
+  grid-template-columns: 1fr; /* stacked on phones */
+  gap: var(--space-3);
+}
+
+@media (min-width: 48rem) {
+  .converter-panes {
+    grid-template-columns: 1fr 1fr; /* side by side on wider screens */
+  }
+}
+
+.text-pane label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--heading);
+  font-weight: 700;
+}
+
+/* Preeti glyphs only show if the font is installed on the visitor's computer. */
+.preeti-input {
+  font-family: 'Preeti', var(--font-sans);
+}
+
+.hint,
+.status {
+  margin: var(--space-2) 0;
+}
+
+.status {
+  min-height: 1.6em; /* keeps the layout steady when the message appears */
+}
+
+/* Not color alone: bold plus underline plus the accent color. */
+mark {
+  background: transparent;
+  color: var(--accent);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent);
+}
+
+.notice,
+.privacy {
+  margin: var(--space-3) 0;
+  padding-left: var(--space-3);
+  border-left: 3px solid var(--input-border);
+}
+
+.review ul {
+  margin: var(--space-2) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review li {
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--input-border);
+}
+
+.review-note {
+  display: block;
+}
