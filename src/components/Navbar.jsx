@@ -1,4 +1,6 @@
 import { NavLink } from 'react-router-dom'
+import ThemeToggle from './ThemeToggle.jsx'
+import '../styles/navbar.css'
 
 // One place to define the tools. Adding a page later means adding a line here.
 const links = [
@@ -10,8 +12,8 @@ const links = [
 
 export default function Navbar() {
   return (
-    <header>
-      <p>[YOUR SITE NAME]</p>
+    <header className="site-header">
+      <p className="site-name">[YOUR SITE NAME]</p>
       <nav aria-label="Main">
         <ul>
           {links.map((link) => (
@@ -21,6 +23,7 @@ export default function Navbar() {
           ))}
         </ul>
       </nav>
+      <ThemeToggle />
     </header>
   )
 }

@@ -1,0 +1,41 @@
+/* Ruled grid of the 12 BS months, like the header of a printed patro.
+   The 1px lines come from the grid gap showing the list's background. */
+
+.patro-rail {
+  background: var(--card);
+  border-bottom: 1px solid var(--input-border);
+}
+
+.patro-rail ol {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* two rows of six on phones */
+  gap: 1px;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  background: var(--input-border); /* shows through the gaps as rule lines */
+}
+
+@media (min-width: 48rem) {
+  .patro-rail ol {
+    grid-template-columns: repeat(12, 1fr); /* one row on wider screens */
+  }
+}
+
+.patro-rail li {
+  padding: var(--space-2) var(--space-1);
+  background: var(--card);
+  color: var(--body-text);
+  font-family: var(--font-serif);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+/* Active month: sindoor underline, bold, darker text.
+   Inset shadow draws the underline without shifting the layout. */
+.patro-rail li.is-active {
+  color: var(--heading);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--accent);
+}

@@ -2,9 +2,21 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>nepali-utilities</title>
+    <title>[YOUR SITE NAME]</title>
+    <script>
+      // Runs before first paint so a saved Dark or Light choice never flashes.
+      // Same key and values as src/hooks/useTheme.js. Keep them in sync.
+      try {
+        var saved = localStorage.getItem('theme')
+        if (saved === 'light' || saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', saved)
+        }
+      } catch (e) {
+        // localStorage blocked: fall back to Auto.
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

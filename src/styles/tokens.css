@@ -1,0 +1,76 @@
+/* Design tokens: every color and size used by the site.
+   Light is the default. Dark applies in two cases:
+   1. The OS prefers dark AND the user has not forced light.
+   2. The user forced dark with the toggle (data-theme="dark").
+   CSS cannot share one block between a media query and a selector,
+   so the dark values appear twice. Keep both copies identical. */
+
+:root {
+  color-scheme: light;
+
+  /* Base palette (light) */
+  --navbar: #334155;
+  --background: #F1F5F9;
+  --card: #FFFFFF;
+  --heading: #0F172A;
+  --body-text: #475569;
+  --input-border: #64748B;
+  --primary-button: #0369A1;
+  --button-text: #FFFFFF;
+  --button-hover: #075985;
+  --focus-ring: #0284C7;
+
+  /* Added colors */
+  --navbar-text: #F1F5F9; /* text on the navbar; light on slate-700 */
+  --accent: #B91C1C;      /* "Sindoor": Saturday and the patro rail only */
+
+  /* Fonts */
+  --font-sans: 'Noto Sans Devanagari', system-ui, sans-serif;
+  --font-serif: 'Noto Serif Devanagari', Georgia, serif;
+
+  /* Shape and spacing */
+  --radius: 4px;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --navbar: #020617;
+    --background: #0F172A;
+    --card: #1E293B;
+    --heading: #F1F5F9;
+    --body-text: #CBD5E1;
+    --input-border: #64748B;
+    --primary-button: #38BDF8;
+    --button-text: #0F172A;
+    --button-hover: #7DD3FC;
+    --focus-ring: #38BDF8;
+
+    --navbar-text: #F1F5F9;
+    --accent: #FCA5A5;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --navbar: #020617;
+  --background: #0F172A;
+  --card: #1E293B;
+  --heading: #F1F5F9;
+  --body-text: #CBD5E1;
+  --input-border: #64748B;
+  --primary-button: #38BDF8;
+  --button-text: #0F172A;
+  --button-hover: #7DD3FC;
+  --focus-ring: #38BDF8;
+
+  --navbar-text: #F1F5F9;
+  --accent: #FCA5A5;
+}

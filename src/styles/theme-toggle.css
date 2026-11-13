@@ -1,0 +1,33 @@
+/* The toggle lives only in the navbar, so it uses navbar colors. */
+
+.theme-toggle {
+  display: inline-flex;
+  border: 1px solid var(--navbar-text); /* was --input-border: too dim on the navbar */
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.theme-toggle button {
+  min-height: 44px; /* comfortable touch target */
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  background: transparent;
+  color: var(--navbar-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Selected state: fill, bold text AND a bright inset line.
+   In light theme the fill (#0369A1) is only 1.75:1 against the navbar,
+   so the inset line (navbar text color, 9.45:1) carries the state. */
+.theme-toggle button[aria-pressed='true'] {
+  background: var(--primary-button);
+  color: var(--button-text);
+  font-weight: 700;
+  box-shadow: inset 0 0 0 2px var(--navbar-text);
+}
+
+.theme-toggle button[aria-pressed='false']:hover {
+  background: var(--button-hover);
+  color: var(--button-text);
+}
