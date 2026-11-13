@@ -1,12 +1,18 @@
 // Preeti keyboard layout: key -> Unicode Devanagari.
 //
-// STATUS: DRAFT, CROSS-CHECKED AGAINST A CHART ONLY.
+// STATUS: DRAFT, PARTLY VERIFIED.
 // Sources:
 //   1. My general knowledge of the standard Preeti layout.
 //   2. A Preeti keyboard chart supplied by the project owner (origin unknown,
-//      not an official source). Rows that match it are not marked doubtful.
-// NOT yet checked in Word with a real Preeti font. Entries with a `doubt`
-// note are the ones to check first.
+//      not an official source).
+//   3. One real passage (Preeti text plus its correct Unicode) supplied by the
+//      project owner. It is the test in tests/verified-sample.test.js.
+//
+// Confirmed by that passage (entries without a doubt note that it exercises):
+//   keys  d ] / f c g ' k l : y t s j w e o ; r b } n u x { ? ~ O + Q 8 L D | " 0 P Z 5 .
+//   plus the sequences  O{  and  0f
+// Everything else is chart-checked only, NOT confirmed against real text.
+// Entries with a `doubt` note are the ones to check next.
 //
 // Entry types (used by convert.js):
 //   consonant  full letter or conjunct; can take matras
@@ -26,7 +32,7 @@
 //   2, 4  (not listed in the chart as consonants; not digits either)
 //   m     (alone it is only a stroke; see SEQUENCE_MAP km and em)
 
-export const MAPPING_STATUS = 'DRAFT_CHART_CHECKED'
+export const MAPPING_STATUS = 'DRAFT_PARTLY_SAMPLE_VERIFIED'
 
 const e = (type, out, doubt) => (doubt ? { type, out, doubt } : { type, out })
 
@@ -44,7 +50,7 @@ export const KEY_MAP = {
   i: e('half', 'ष्'),
   j: e('consonant', 'व'),
   k: e('consonant', 'प'),
-  l: e('prematra', 'ि', 'Chart font cannot tell l from I. Chosen because क्ष = If'),
+  l: e('prematra', 'ि'), // lowercase L; confirmed by the sample passage
   n: e('consonant', 'ल'),
   o: e('consonant', 'य'),
   p: e('vowel', 'उ'),
@@ -68,7 +74,7 @@ export const KEY_MAP = {
   F: e('sign', 'ँ'),
   G: e('half', 'न्'),
   H: e('half', 'ज्'),
-  I: e('half', 'क्ष्', 'Chart font cannot tell I from l. Chosen because क्ष = If'),
+  I: e('half', 'क्ष्', 'Not in the sample. Chart font cannot tell I from l; l is now confirmed as ि'),
   J: e('half', 'व्'),
   K: e('half', 'प्'),
   L: e('matra', 'ी'),
@@ -118,9 +124,9 @@ export const KEY_MAP = {
   '+': e('sign', 'ं'),
   '\\': e('halant', '्'),
 
-  // R-forms: chart shows two r-form glyphs but I cannot confirm which key is which
-  '{': e('reph', 'र्', 'Chart shows an r-form; unsure if { is reph or rakar'),
-  '|': e('rakar', '्र', 'Chart shows an r-form; unsure if | is rakar or reph'),
+  // R-forms: both confirmed by the sample passage
+  '{': e('reph', 'र्'),
+  '|': e('rakar', '्र'),
 
   // Other consonants and punctuation
   ';': e('consonant', 'स'),
@@ -137,7 +143,7 @@ export const KEY_MAP = {
   // Not shown in the chart. From my memory of Preeti. Check these in Word.
   '=': e('punct', '.', 'Not in chart'),
   '>': e('consonant', 'श्र', 'Not in chart'),
-  '?': e('syllable', 'रु', 'Not in chart'),
+  '?': e('syllable', 'रु'), // confirmed by the sample passage
 }
 
 // ---- Multi-key sequences ----
@@ -160,7 +166,7 @@ export const SEQUENCE_MAP = {
 
 // ---- High-code characters (outside plain ASCII) ----
 // Only entries I could read clearly in the chart. Keys are the characters
-// themselves (Alt codes are Windows-1252 positions).
+// themselves (Alt codes are Windows-1252 positions). None confirmed by real text.
 export const HIGH_MAP = {
   'ª': e('consonant', 'ङ'),
   '£': e('half', 'घ्'),
